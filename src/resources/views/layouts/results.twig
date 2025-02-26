@@ -6,19 +6,29 @@
 <p>You matched with <!-- NUMBER OF COMPANIES MATCHED --> </p>
 
 <div class="matches">
+<div class="matches card">
     {% for company in matchedCompanies %}
         <div class="matches__match">
             <h3>{{ company.name }}</h3>
+        <div class="matches__match card-body">
             <p>{{ company.description }}</p>
             <a href="#" class="matches__match__more">more</a>
 
-            <div class="match__match__details" style="display:none">
                 <p><strong>Email:</strong> {{ company.email }}</p>
                 <p><strong>Phone:</strong> {{ company.phone }}</p>
                 <p><strong>Website:</strong> {{ company.website }}</p>
+            
+            <div id="collapse-{{ company.id }}" class="match__match__details collapse">
+                <p><strong>Email:</strong> <a href="mailto:{{ company.email }}">{{ company.email }}</a></p>
+                <p><strong>Phone:</strong> <a href="tel:{{ company.phone }}">{{ company.phone }}</a></p>
+                <p><strong>Website:</strong> <a href="{{ company.website }}">{{ company.website }}</a></p>
             </div>
         </div>
     {% endfor %}
+
+    <div class="card-footer">
+        <a href="/form" class="btn btn-outline-dark">&lt;Back</a>
+    </div>
 </div>
 
 {% endblock %}

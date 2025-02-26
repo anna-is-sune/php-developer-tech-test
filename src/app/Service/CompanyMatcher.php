@@ -34,7 +34,7 @@ class CompanyMatcher
             $params['type'] = $filters['type'];
         }
 
-        $sql = 'SELECT c.*  FROM company_matching_settings cms INNER JOIN companies c ON cms.company_id = c.id WHERE c.active = true';
+        $sql = 'SELECT c.* FROM company_matching_settings cms INNER JOIN companies c ON cms.company_id = c.id WHERE c.active = true';
         foreach ($where as $condition) {
             $sql .= ' AND ' . $condition;
         }
@@ -46,16 +46,13 @@ class CompanyMatcher
         if ($stmt->execute($params)) {
             while ($company = $stmt->fetch(\PDO::FETCH_ASSOC)) 
             {
-                $company['description'] = htmlentities($company['description']);
-                $this->db->prepare('UPDATE companies SET credits = credits - 1 WHERE id = :id')->execute([
-                    'id' => $company['id']
-                ]);
-
                 $companies[] = $company;
             }
         }
 
-        return $companies;
+        $this->matches = $companies;
+
+        return $this;
     }
 
     public function pick(int $count)
@@ -70,6 +67,13 @@ class CompanyMatcher
 
     public function deductCredits()
     {
-        
+        foreach ($this->matches as $match) {
+            $stmt = $this->db->prepare('UPDATE companies SET credits = credits - 1 WHERE id = :id');
+            $stmt->execute([
+                'id' => $match['id']
+            ]);
+        }
+
+        return $this;
     }
 }

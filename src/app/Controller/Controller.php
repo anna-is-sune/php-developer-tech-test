@@ -12,7 +12,7 @@ abstract class Controller
             try {
                 $this->db = new \PDO(
                     sprintf(
-                        '%s:host=%s;port=%d;dbname=%s', 
+                        '%s:host=%s;port=%d;dbname=%s;charset=utf8mb4', 
                         $_ENV['DB_TYPE'], 
                         $_ENV['DB_HOST'], 
                         $_ENV['DB_PORT'], 

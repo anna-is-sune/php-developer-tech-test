@@ -1,8 +1,8 @@
 {% extends 'app.twig' %}
 
 {% block content %}
-<form name="form" method="post">
-	<fieldset>
+<form name="form" method="post" action="/result">
+	<fieldset class="row">
 		<legend>Contact Details</legend>
 		<p>
 			<label for="first_name" class="required">First name</label>
@@ -22,7 +22,7 @@
 		</p>
 	</fieldset>
 ​
-	<fieldset>
+	<fieldset class="row">
 		<legend>Address</legend>
 		<p>
 			<label for="address_line_1" class="required">Current address line 1</label>
@@ -54,7 +54,7 @@
 		</p>
 	</fieldset>
 	
-	<fieldset>
+	<fieldset class="row">
 		<legend>Your Property</legend>
 		<p>
 			<label for="type" class="required">Property type</label>
@@ -112,7 +112,7 @@
 		</p>
 	</fieldset>
 	
-	<fieldset>
+	<fieldset class="row">
 		<legend>A Few Final Details</legend>
 		<p>
 			<label for="type" class="required">Survey type</label>
