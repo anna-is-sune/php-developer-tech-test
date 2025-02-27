@@ -2,14 +2,19 @@
 
 namespace App\Service;
 
+use Katzgrau\KLogger\Logger;
+
 class CompanyMatcher
 {
     private $db;
     private $matches = [];
 
+    private $logger;
+
     public function __construct(\PDO $db) 
     {
         $this->db = $db;
+        $this->logger = new Logger($_ENV['LOG_DIR']);
     }
 
     public function match(array $filters)
@@ -39,7 +44,7 @@ class CompanyMatcher
             $sql .= ' AND ' . $condition;
         }
 
-        $sql .= ' ORDER BY rand() LIMIT 3'; 
+        $sql .= ' ORDER BY rand() LIMIT ' . $_ENV['MAX_MATCHED_COMPANIES']; 
 
         $companies = [];
         $stmt = $this->db->prepare($sql);
@@ -68,9 +73,15 @@ class CompanyMatcher
     public function deductCredits()
     {
         foreach ($this->matches as $match) {
-            $stmt = $this->db->prepare('UPDATE companies SET credits = credits - 1 WHERE id = :id');
+            $credits = $match['credits'] - 1;
+            if ($credits <= 0) {
+                $this->logger->notice('Company "' . $match['name'] . '" has ran out of credits.');
+            }
+            
+            $stmt = $this->db->prepare('UPDATE companies SET credits = :credits WHERE id = :id');
             $stmt->execute([
-                'id' => $match['id']
+                'id' => $match['id'],
+                'credits' => $credits,
             ]);
         }
 
