@@ -7,19 +7,19 @@
 		<div class="card-body">
 		<p>
 			<label for="first_name" class="required form-label">First name</label>
-			<input type="text" class="form-control" name="first_name" id="first_name" required value="Test">
+			<input type="text" class="form-control" name="first_name" id="first_name" required value="{{ postData.first_name | default('Test')}}">
 		</p>
 		<p>
 			<label for="surname" class="form-label">Surname</label>
-			<input type="text" class="form-control" name="surname" id="surname" placeholder="" value="Customer">
+			<input type="text" class="form-control" name="surname" id="surname" placeholder="" value="{{ postData.surname | default('Customer')}}">
 		</p>
 		<p>
 			<label for="email" class="required form-label">Email address</label>
-			<input type="email" class="form-control" name="email" id="email" required value="test@email.com">
+			<input type="email" class="form-control" name="email" id="email" required value="{{ postData.email | default('test@email.com') }}">
 		</p>
 		<p>
 			<label for="phone" class="required form-label">Telephone number</label>
-			<input type="text" class="form-control" name="phone" id="phone" required value="00000111111">
+			<input type="text" class="form-control" name="phone" id="phone" required value="{{ postData.phone | default('00000111111') }}">
 		</p>
 		</div>
 	</fieldset>
@@ -29,31 +29,31 @@
 		<div class="card-body">
 		<p>
 			<label for="address_line_1" class="required form-label">Current address line 1</label>
-			<input type="text" class="form-control" name="address_line_1" id="address_line_1" required value="123 Current St">
+			<input type="text" class="form-control" name="address_line_1" id="address_line_1" required value="{{ postData.address_line_1 | default('123 Current St') }}">
 		</p>
 		<p>
 			<label for="address_line_2" class="form-label">Current address line 2</label>
-			<input type="text" class="form-control" name="address_line_2" id="address_line_2">
+			<input type="text" class="form-control" name="address_line_2" id="address_line_2" value="{{ postData.address_line_2 | default('')}}">
 		</p>
 		<p>
 			<label for="address_line_3" class="form-label">Current address line 3</label>
-			<input type="text" class="form-control" name="address_line_3" id="address_line_3">
+			<input type="text" class="form-control" name="address_line_3" id="address_line_3" value="{{ postData.address_line_3 | default('')}}">
 		</p>
 		<p>
 			<label for="address_line_4" class="form-label">Current address line 4</label>
-			<input type="text" class="form-control" name="address_line_4" id="address_line_4">
+			<input type="text" class="form-control" name="address_line_4" id="address_line_4" value="{{ postData.address_line_4 | default('')}}">
 		</p>
 		<p>
 			<label for="town" class="required form-label">Current town/city</label>
-			<input type="text" class="form-control" name="town" id="town" required value="Current Town">
+			<input type="text" class="form-control" name="town" id="town" required value="{{ postData.town | default('Current Town') }}">
 		</p>
 		<p>
 			<label for="county" class="form-label">Current county</label>
-			<input type="text" class="form-control" name="county" id="county">
+			<input type="text" class="form-control" name="county" id="county" value="{{ postData.county | default('')}}">
 		</p>
 		<p>
 			<label for="postcode" class="required form-label">Current postcode</label>
-			<input type="text" class="form-control" name="postcode" id="postcode" required value="CF11 9HB">
+			<input type="text" class="form-control" name="postcode" id="postcode" required value="{{ postData.postcode | default('CF11 9HB') }}">
 		</p>
 		</div>
 	</fieldset>
@@ -65,17 +65,17 @@
 			<label for="type" class="required form-label">Property type</label>
 			<span class="checker-wrap form-checker row">
 				<label class="checker col">
-					<input type="radio" value="apartment-flat" name="type" required>
+					<input type="radio" value="apartment-flat" name="property_type" required {{ (postData.property_type is defined and postData.property_type == 'apartment-flat') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					Apartment/Flat
 				</label>
 				<label class="checker col">
-					<input type="radio" value="house" name="type" required checked>
+					<input type="radio" value="house" name="property_type" required {{ (postData.property_type is not defined or postData.property_type == 'house') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					House
 				</label>
 				<label class="checker col">
-					<input type="radio" value="bungalow" name="type" required>
+					<input type="radio" value="bungalow" name="property_type" required {{ (postData.property_type is defined and postData.property_type == 'bungalow') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					Bungalow
 				</label>
@@ -85,27 +85,27 @@
 			<label class="form-label">How many bedrooms?</label>
 			<span class="checker-wrap form-checker row">
 				<label class="checker col">
-					<input type="radio" value="1" name="bedrooms" required>
+					<input type="radio" value="1" name="bedrooms" required {{ (postData.bedrooms is defined and postData.bedrooms == '1') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					1 Bedroom
 				</label>
 				<label class="checker col">
-					<input type="radio" value="2" name="bedrooms" required>
+					<input type="radio" value="2" name="bedrooms" required {{ (postData.bedrooms is defined and postData.bedrooms == '2') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					2 Bedrooms
 				</label>
 				<label class="checker col">
-					<input type="radio" value="3" name="bedrooms" required checked>
+					<input type="radio" value="3" name="bedrooms" required  {{ (postData.bedrooms is not defined or postData.bedrooms == '3') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					3 Bedrooms
 				</label>
 				<label class="checker col">
-					<input type="radio" value="4" name="bedrooms" required>
+					<input type="radio" value="4" name="bedrooms" required {{ (postData.bedrooms is defined and postData.bedrooms == '4') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					4 Bedrooms
 				</label>
 				<label class="checker col">
-					<input type="radio" value="5+" name="bedrooms" required>
+					<input type="radio" value="5+" name="bedrooms" required {{ (postData.bedrooms is defined and postData.bedrooms == '5') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					5 Bedrooms or more
 				</label>
@@ -113,7 +113,7 @@
 		</p>
 		<p>
 			<label for="property_value" class="form-label">Property Value</label>
-			<input type="text" class="form-control" id="property_value" name="property_value" required data-min="20000" data-max="10000000" value="150000">
+			<input type="text" class="form-control" id="property_value" name="property_value" required data-min="20000" data-max="10000000" value="{{ postData.property_value | default('150000') }}">
 		</p>
 		</div>
 	</fieldset>
@@ -125,17 +125,17 @@
 			<label for="type" class="required form-label">Survey type</label>
 			<span class="checker-wrap form-check row">
 				<label class="checker col">
-					<input type="radio" value="homebuyer" name="type" required>
+					<input type="radio" value="homebuyer" name="type" required {{ (postData.type is defined and postData.type == 'homebuyer') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					HomeBuyer Survey
 				</label>
 				<label class="checker col">
-					<input type="radio" value="building" name="type" required checked>
+					<input type="radio" value="building" name="type" required {{ (postData.type is not defined or postData.type == 'building') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					Building Survey
 				</label>
 				<label class="checker col">
-					<input type="radio" value="valuation" name="type" required>
+					<input type="radio" value="valuation" name="type" required {{ (postData.type is defined and postData.type == 'valuation') ? 'checked' : '' }}>
 					<span class="radio"></span>
 					Valuation Survey
 				</label>
@@ -143,7 +143,7 @@
 		</p>
 		<p>
 			<label for="additional_information" class="form-label">Any other information you think we should know?</label>
-			<textarea name="additional_information" class="form-control" id="additional_information" rows="5"></textarea>
+			<textarea name="additional_information" class="form-control" id="additional_information" rows="5">{{ postData.additional_information | default('')}}</textarea>
 		</p>
 		</div>
 	</fieldset>
