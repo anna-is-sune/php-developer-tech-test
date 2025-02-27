@@ -1,75 +1,80 @@
 {% extends 'app.twig' %}
 
 {% block content %}
-<form name="form" method="post" action="/result">
-	<fieldset class="row">
-		<legend>Contact Details</legend>
+<form name="form" method="post" action="/result" class="card">
+	<fieldset>
+		<legend class="card-header">Contact Details</legend>
+		<div class="card-body">
 		<p>
-			<label for="first_name" class="required">First name</label>
-			<input type="text" name="first_name" id="first_name" required value="Test">
+			<label for="first_name" class="required form-label">First name</label>
+			<input type="text" class="form-control" name="first_name" id="first_name" required value="Test">
 		</p>
 		<p>
-			<label for="surname">Surname</label>
-			<input type="text" name="surname" id="surname" placeholder="" value="Customer">
+			<label for="surname" class="form-label">Surname</label>
+			<input type="text" class="form-control" name="surname" id="surname" placeholder="" value="Customer">
 		</p>
 		<p>
-			<label for="email" class="required">Email address</label>
-			<input type="email" name="email" id="email" required value="test@email.com">
+			<label for="email" class="required form-label">Email address</label>
+			<input type="email" class="form-control" name="email" id="email" required value="test@email.com">
 		</p>
 		<p>
-			<label for="phone" class="required">Telephone number</label>
-			<input type="text" name="phone" id="phone" required value="00000111111">
+			<label for="phone" class="required form-label">Telephone number</label>
+			<input type="text" class="form-control" name="phone" id="phone" required value="00000111111">
 		</p>
+		</div>
 	</fieldset>
-​
-	<fieldset class="row">
-		<legend>Address</legend>
+
+	<fieldset>
+		<legend class="card-header">Address</legend>
+		<div class="card-body">
 		<p>
-			<label for="address_line_1" class="required">Current address line 1</label>
-			<input type="text" name="address_line_1" id="address_line_1" required value="123 Current St">
+			<label for="address_line_1" class="required form-label">Current address line 1</label>
+			<input type="text" class="form-control" name="address_line_1" id="address_line_1" required value="123 Current St">
 		</p>
 		<p>
-			<label for="address_line_2">Current address line 2</label>
-			<input type="text" name="address_line_2" id="address_line_2">
+			<label for="address_line_2" class="form-label">Current address line 2</label>
+			<input type="text" class="form-control" name="address_line_2" id="address_line_2">
 		</p>
 		<p>
-			<label for="address_line_3">Current address line 3</label>
-			<input type="text" name="address_line_3" id="address_line_3">
+			<label for="address_line_3" class="form-label">Current address line 3</label>
+			<input type="text" class="form-control" name="address_line_3" id="address_line_3">
 		</p>
 		<p>
-			<label for="address_line_4">Current address line 4</label>
-			<input type="text" name="address_line_4" id="address_line_4">
+			<label for="address_line_4" class="form-label">Current address line 4</label>
+			<input type="text" class="form-control" name="address_line_4" id="address_line_4">
 		</p>
 		<p>
-			<label for="town" class="required">Current town/city</label>
-			<input type="text" name="town" id="town" required value="Current Town">
+			<label for="town" class="required form-label">Current town/city</label>
+			<input type="text" class="form-control" name="town" id="town" required value="Current Town">
 		</p>
 		<p>
-			<label for="county">Current county</label>
-			<input type="text" name="county" id="county">
+			<label for="county" class="form-label">Current county</label>
+			<input type="text" class="form-control" name="county" id="county">
 		</p>
 		<p>
-			<label for="postcode" class="required">Current postcode</label>
-			<input type="text" name="postcode" id="postcode" required value="CF11 9HB">
+			<label for="postcode" class="required form-label">Current postcode</label>
+			<input type="text" class="form-control" name="postcode" id="postcode" required value="CF11 9HB">
 		</p>
+		</div>
 	</fieldset>
 	
-	<fieldset class="row">
-		<legend>Your Property</legend>
+	<fieldset>
+		<legend class="card-header">Your Property</legend>
+		<div class="card-body">
 		<p>
-			<label for="type" class="required">Property type</label>
-			<span class="checker-wrap">
-				<label class="checker">
+			<label for="type" class="required form-label">Property type</label>
+			<span class="checker-wrap form-checker row">
+				<label class="checker col">
 					<input type="radio" value="apartment-flat" name="type" required>
 					<span class="radio"></span>
 					Apartment/Flat
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="house" name="type" required checked>
 					<span class="radio"></span>
 					House
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="bungalow" name="type" required>
 					<span class="radio"></span>
 					Bungalow
@@ -77,29 +82,29 @@
 			</span>
 		</p>
 		<p>
-			<label>How many bedrooms?</label>
-			<span class="checker-wrap">
-				<label class="checker">
+			<label class="form-label">How many bedrooms?</label>
+			<span class="checker-wrap form-checker row">
+				<label class="checker col">
 					<input type="radio" value="1" name="bedrooms" required>
 					<span class="radio"></span>
 					1 Bedroom
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="2" name="bedrooms" required>
 					<span class="radio"></span>
 					2 Bedrooms
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="3" name="bedrooms" required checked>
 					<span class="radio"></span>
 					3 Bedrooms
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="4" name="bedrooms" required>
 					<span class="radio"></span>
 					4 Bedrooms
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="5+" name="bedrooms" required>
 					<span class="radio"></span>
 					5 Bedrooms or more
@@ -107,27 +112,29 @@
 			</span>
 		</p>
 		<p>
-			<label for="property_value">Property Value</label>
-			<input type="text" id="property_value" name="property_value" required data-min="20000" data-max="10000000" value="150000">
+			<label for="property_value" class="form-label">Property Value</label>
+			<input type="text" class="form-control" id="property_value" name="property_value" required data-min="20000" data-max="10000000" value="150000">
 		</p>
+		</div>
 	</fieldset>
 	
-	<fieldset class="row">
-		<legend>A Few Final Details</legend>
+	<fieldset>
+		<legend class="card-header">A Few Final Details</legend>
+		<div class="card-body">
 		<p>
-			<label for="type" class="required">Survey type</label>
-			<span class="checker-wrap">
-				<label class="checker">
+			<label for="type" class="required form-label">Survey type</label>
+			<span class="checker-wrap form-check row">
+				<label class="checker col">
 					<input type="radio" value="homebuyer" name="type" required>
 					<span class="radio"></span>
 					HomeBuyer Survey
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="building" name="type" required checked>
 					<span class="radio"></span>
 					Building Survey
 				</label>
-				<label class="checker">
+				<label class="checker col">
 					<input type="radio" value="valuation" name="type" required>
 					<span class="radio"></span>
 					Valuation Survey
@@ -135,13 +142,15 @@
 			</span>
 		</p>
 		<p>
-			<label for="additional_information">Any other information you think we should know?</label>
-			<textarea name="additional_information" id="additional_information" rows="5"></textarea>
+			<label for="additional_information" class="form-label">Any other information you think we should know?</label>
+			<textarea name="additional_information" class="form-control" id="additional_information" rows="5"></textarea>
 		</p>
+		</div>
 	</fieldset>
 	
-	<p>
-		<input type="submit" name="compare" value="Compare Now">
+	<p class="card-footer">
+		<input type="submit" name="compare" value="Compare Now" class="btn btn-outline-dark">
 	</p>
+	
 </form>
 {% endblock %}
